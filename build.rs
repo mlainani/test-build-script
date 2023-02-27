@@ -17,8 +17,14 @@ fn main() {
 
     // println!("cargo:warning=arg is {}", arg);
 
+    let iowa_dot_h_path = iowa_include_dir_path.join("iowa.h");
+    let iowa_dot_h_path_str = iowa_dot_h_path.to_str().expect("IOWA main header file path is not a valid string");
+
+    println!("cargo:warning=IOWA main header file path is {}", iowa_dot_h_path_str);
+
+
     let bindings = bindgen::Builder::default()
-    .header("/Users/mlainani/making/LTS_2022-05.3/include/iowa.h")
+    .header(iowa_dot_h_path_str)
     .generate()
     .expect("cannot generate bindings");
    
